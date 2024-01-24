@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="form2">
+  <grid id="27dc6" binding="pantalla" layout-manager="GridLayoutManager" row-count="2" column-count="2" same-size-horizontally="true" same-size-vertically="false" hgap="-1" vgap="-1">
+    <margin top="0" left="0" bottom="0" right="0"/>
+    <constraints>
+      <xy x="20" y="20" width="500" height="400"/>
+    </constraints>
+    <properties/>
+    <border type="none"/>
+    <children>
+      <grid id="58700" class="javax.swing.JMenuBar" binding="menuBar" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="0">
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="2" vsize-policy="3" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <grid id="9462a" class="javax.swing.JMenu" binding="archivo" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="0">
+            <constraints/>
+            <properties>
+              <text value="Archivo"/>
+            </properties>
+            <border type="none"/>
+            <children>
+              <component id="ec24f" class="javax.swing.JMenuItem" binding="abrirArchivo">
+                <constraints/>
+                <properties>
+                  <armed value="false"/>
+                  <hideActionText value="false"/>
+                  <text value="Abrir Archivo"/>
+                </properties>
+              </component>
+              <component id="b01eb" class="javax.swing.JMenuItem" binding="cerrarArchivo">
+                <constraints/>
+                <properties>
+                  <text value="Cerrar Archivo"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+          <grid id="e7998" class="javax.swing.JMenu" binding="Sesion" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="0">
+            <constraints/>
+            <properties>
+              <text value="Sesion"/>
+            </properties>
+            <border type="none"/>
+            <children>
+              <component id="607cc" class="javax.swing.JMenuItem" binding="cerrarSesion">
+                <constraints/>
+                <properties>
+                  <text value="CerrarSesion"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+        </children>
+      </grid>
+      <scrollpane id="594ff" binding="scrollPane">
+        <constraints>
+          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <component id="5349a" class="javax.swing.JTextArea" binding="textArea">
+            <constraints/>
+            <properties/>
+          </component>
+        </children>
+      </scrollpane>
+      <component id="48fc9" class="javax.swing.JTable" binding="table1" default-binding="true">
+        <constraints>
+          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="50"/>
+          </grid>
+        </constraints>
+        <properties>
+          <dropMode value="USE_SELECTION"/>
+          <editingColumn value="5"/>
+          <editingRow value="5"/>
+        </properties>
+      </component>
+    </children>
+  </grid>
+</form>
