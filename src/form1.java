@@ -13,11 +13,12 @@ public class form1 {
         INGRESARButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String usuario="";
-                String pass="";
+                String usuario="Admin";
+                String pass="admin";
                 if (usuarioField.getText().equals(usuario)&&String.valueOf(passwordField.getPassword()).equals(pass)){
                     frame2.setContentPane(new form2().pantalla);
                     frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                    frame2.setLocationRelativeTo(Main.frame);
                     frame2.setSize(400,400);
                     frame2.setVisible(true);
                     Main.frame.dispose();

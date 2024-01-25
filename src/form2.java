@@ -1,9 +1,7 @@
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.ComponentAdapter;
-import java.awt.event.ComponentEvent;
+import java.awt.*;
+import java.awt.event.*;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
@@ -18,17 +16,19 @@ public class form2 {
     private JMenuItem cerrarArchivo;
     private JMenuItem cerrarSesion;
     private JScrollPane scrollPane;
-    private JTable table1;
+    private JComboBox comboBox1;
+    private JLabel sizeText;
+    private JButton mostrarButton;
 
     public form2() {
-        abrirArchivo.addActionListener(new ActionListener() {
+        abrirArchivo.addActionListener(new ActionListener() { //Item del menu
             @Override
             public void actionPerformed(ActionEvent e) {
-                JFileChooser fileChooser = new JFileChooser();
-                FileNameExtensionFilter filtro = new FileNameExtensionFilter("*.TXT","txt");
+                JFileChooser fileChooser = new JFileChooser(); //creacion de un objeto de la clase filechooser
+                FileNameExtensionFilter filtro = new FileNameExtensionFilter("*.TXT","txt"); //filtracion de archivos a txt
                 fileChooser.setFileFilter(filtro);
-                int resultado = fileChooser.showDialog(null,"Abrir");
-                if (resultado==JFileChooser.APPROVE_OPTION){
+                int resultado = fileChooser.showDialog(null,"Abrir"); //muestra el selector de archivos
+                if (resultado==JFileChooser.APPROVE_OPTION){ // si el
                     File fichero = fileChooser.getSelectedFile();
                     String text=fichero.getAbsolutePath();
                     textArea.setText(text);
@@ -62,11 +62,42 @@ public class form2 {
                 form1.frame2.dispose();
             }
         });
-        table1.addComponentListener(new ComponentAdapter() {
+
+        comboBox1.addItemListener(new ItemListener() {
             @Override
-            public void componentShown(ComponentEvent e) {
-                super.componentShown(e);
+            public void itemStateChanged(ItemEvent e) {
+                if (e.getSource()==comboBox1){
+                    int seleccionado = comboBox1.getSelectedIndex();
+                    if(seleccionado==0){
+                        textArea.setFont(new Font("Size10",Font.PLAIN,10));
+                    } else if (seleccionado==1) {
+                        textArea.setFont(new Font("Size12",Font.PLAIN,12));
+                    }else if (seleccionado==2) {
+                        textArea.setFont(new Font("Size14",Font.PLAIN,14));
+                    }
+                }
             }
         });
+        mostrarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFrame frame = new JFrame("Integrantes");
+                frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                JTable table = createTable();
+                JScrollPane scrollPane = new JScrollPane(table);
+                frame.setLocationRelativeTo(form1.frame2);
+                frame.getContentPane().add(scrollPane);
+                frame.setSize(200,250);
+                frame.setVisible(true);
+            }
+        });
+    }
+    public static JTable createTable()
+    {
+        String[] columnNames = {"Nombre", "Apellido"};
+        Object[][] data = {{"Estefanía", "Sanchez"},{"Isaac", "León"},{"Francisco","Caero"}};
+        JTable table = new JTable(data, columnNames);
+        table.setFillsViewportHeight(true);
+        return table;
     }
 }
